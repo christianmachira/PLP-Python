@@ -15,4 +15,6 @@ del my_list[-1]
 my_list2.sort()
 #print element 30
 print(my_list.index(30))
+print(my_list)
+
 
