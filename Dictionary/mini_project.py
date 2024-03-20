@@ -4,6 +4,7 @@
 
 # importing the json module
 import json
+import difflib
 
 # load json file
 with open('/Users/christianmachira/Developer/Python PLP/Dictionary/data.json', 'r') as file:
@@ -30,6 +31,14 @@ class dictionary:
             # check if the word is in the dictionary in title case
             elif self.word.title() in data:
                 return data[self.word.title()]
+            elif len(difflib.get_close_matches(self.word, data.keys())) > 0:
+                yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % difflib.get_close_matches(self.word, data.keys())[0])
+                if yn == "Y":
+                    return data[difflib.get_close_matches(self.word, data.keys())[0]]
+                elif yn == "N":
+                    return "The word does not exist in the dictionary. Please double check"
+                else:
+                    return "We did not understand your entry"    
             else:
                 return "The word does not exist in the dictionary"
 
