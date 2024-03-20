@@ -31,6 +31,7 @@ class dictionary:
             # check if the word is in the dictionary in title case
             elif self.word.title() in data:
                 return data[self.word.title()]
+            # adding word predicition intelligence to the program using the difflib module
             elif len(difflib.get_close_matches(self.word, data.keys())) > 0:
                 yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % difflib.get_close_matches(self.word, data.keys())[0])
                 if yn == "Y":
